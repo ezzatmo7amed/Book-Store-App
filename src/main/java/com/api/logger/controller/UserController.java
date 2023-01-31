@@ -2,19 +2,21 @@ package com.api.logger.controller;
 
 import com.api.logger.payload.UserManagement.UserDto;
 import com.api.logger.sevice.UserService;
+import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
-@RequestMapping("/api/v1/user/")
+@AllArgsConstructor
+@RequestMapping("/api/v1/users/")
 public class UserController {
 
     private final  UserService userService;
 
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
 
 
     @PostMapping("create")
@@ -22,9 +24,22 @@ public class UserController {
 
         return ResponseEntity.ok(userService.create(model));
     }
-    @GetMapping("getById/")
-    public ResponseEntity<UserDto> getById(@PathVariable Long id){
+    @GetMapping(path = "{userId}/user")
+    public ResponseEntity<UserDto> getById(@PathVariable(value = "userId") Long id){
 
-        return ResponseEntity.ok(userService.getById(id));
+        return new ResponseEntity(userService.getById(id), HttpStatus.FOUND);
+    }
+    @GetMapping("all")
+    public ResponseEntity<List<UserDto>> getAllUsers() {
+        return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.FOUND);
+    }
+    @PutMapping("update")
+    public ResponseEntity<UserDto> update(@RequestBody UserDto model) {
+        return new ResponseEntity<>(userService.update(model), HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("{userId}")
+    public void deleteUserById(@PathVariable(value = "userId") Long id){
+        userService.deleteUserById(id);
     }
 }

@@ -3,11 +3,12 @@ package com.api.logger.model.Department;
 import com.api.logger.model.Employee.Employee;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.util.List;
 
-@Data
+@Setter
+@Getter
 @Entity
 @Table(name = "Departments",uniqueConstraints = {
         @UniqueConstraint(columnNames = {"department_code"})

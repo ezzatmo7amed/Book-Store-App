@@ -2,11 +2,13 @@ package com.api.logger.model.UserManagement;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import java.util.Set;
 
-import java.util.List;
+@Setter
+@Getter
 @Entity
-@Data
 @Table(name = "Roles")
 public class Role {
     @Id
@@ -24,5 +26,5 @@ public class Role {
             {@JoinColumn(name="role_id")},inverseJoinColumns =
             {@JoinColumn(name="user_id")})
     @JsonBackReference
-    private List<User> users ;
+    private Set<User> users ;
 }

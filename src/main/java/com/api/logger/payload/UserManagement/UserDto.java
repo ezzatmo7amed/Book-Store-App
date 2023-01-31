@@ -1,15 +1,12 @@
 package com.api.logger.payload.UserManagement;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
-
+import lombok.*;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
-@Data
+@Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserDto {
@@ -28,5 +25,5 @@ public class UserDto {
 
     private Date createdAt;
 
-    private List<RoleDto> roleList;
+    private Set<RoleDto> roleList;
 }
