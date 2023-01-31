@@ -7,7 +7,8 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.Date;
-import java.util.List;
+
+import java.util.Set;
 
 @Setter
 @Getter
@@ -38,8 +39,10 @@ public class User {
     private Date createdAt;
 
     @ManyToMany(targetEntity = Role.class)
-    @JoinTable(name="users_roles",joinColumns =  {@JoinColumn(name="user_id")},inverseJoinColumns =  {@JoinColumn(name="role_id")})
+    @JoinTable(name="users_roles",joinColumns =
+            {@JoinColumn(name="user_id")},inverseJoinColumns =
+            {@JoinColumn(name="role_id")})
     @JsonManagedReference
-    private List<Role> roleList ;
+    private Set<Role> roleList ;
 
 }

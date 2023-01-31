@@ -5,15 +5,16 @@ import com.api.logger.payload.UserManagement.RoleDto;
 import com.api.logger.repository.RoleRepository;
 import com.api.logger.sevice.RoleService;
 import com.api.utils.ObjectMapper;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class RoleServiceImp implements RoleService {
     private final RoleRepository roleRepository;
 
-    public RoleServiceImp(RoleRepository roleRepository) {this.roleRepository = roleRepository;}
 
     @Override
     public RoleDto create(RoleDto model) {

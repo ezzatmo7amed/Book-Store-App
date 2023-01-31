@@ -4,10 +4,11 @@ import com.api.logger.model.Department.Department;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
-import lombok.Data;
+import lombok.*;
 
 import java.util.Date;
-@Data
+@Setter
+@Getter
 @Entity
 @Table(name = "employees",uniqueConstraints = {
         @UniqueConstraint(columnNames = {"email"}),
