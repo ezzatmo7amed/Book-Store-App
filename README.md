@@ -2,6 +2,5 @@
 
 #All CRUD Operations 
 
-#Desing Pattern 
 
 #Spring Security
